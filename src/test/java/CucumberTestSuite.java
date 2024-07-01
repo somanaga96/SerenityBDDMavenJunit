@@ -6,7 +6,7 @@ import static io.cucumber.junit.platform.engine.Constants.PLUGIN_PROPERTY_NAME;
 @IncludeEngines("cucumber")
 @SelectClasspathResource("/features")
 @ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "io.cucumber.core.plugin.SerenityReporterParallel,pretty,timeline:build/test-results/timeline")
-//@IncludeTags({"green", "red"})
-@IncludeTags({"cricbuzz"})
+@IncludeTags({"green", "red","cricbuzz"})
+//@IncludeTags({"red"})
 public class CucumberTestSuite {
 }

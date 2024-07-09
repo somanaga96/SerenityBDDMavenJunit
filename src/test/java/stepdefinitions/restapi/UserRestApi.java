@@ -2,7 +2,6 @@ package stepdefinitions.restapi;
 
 import com.example.generated.reqres.CreateUser.RequestUser;
 import com.example.generated.reqres.CreateUser.RequestUserResponse;
-import com.example.generated.reqres.GetUser.ResponseUser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.cucumber.java.Before;
@@ -48,9 +47,9 @@ public class UserRestApi extends Maker {
         RequestUserResponse requestUserResponse = getRequestUserResponse();
         String id = requestUserResponse.getId();
         System.out.println("User id:" + id);
-        ResponseBody body = given().log().all().get("/api/users?page=" + id).getBody();
+        String val= given().log().all().get("/api/users?page=" + id).getBody().asString();
         ObjectMapper objectMapper = new ObjectMapper();
-        RequestUser reqres = objectMapper.readValue(body.asString(), RequestUser.class);
+        RequestUser reqres = objectMapper.readValue(val, RequestUser.class);
 
         // Log the request and response separately to Serenity report
         String jsonRequest = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(reqres);
